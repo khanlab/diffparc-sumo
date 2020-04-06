@@ -38,12 +38,6 @@ echo preprocT1 $subj
 preprocT1 $subj
 fi
 
-if [ ! -e $subj/t1/t1.brain.inorm.fast_seg.nii.gz ]
-then
-	echo fast -v -p -o $subj/t1/t1.brain.inorm.fast $subj/t1/t1.brain.inorm.nii.gz
-	fast -v -p -o $subj/t1/t1.brain.inorm.fast $subj/t1/t1.brain.inorm.nii.gz
-fi
-
 #echo in_atlas_dir: $in_atlas_dir
 #copy atlases to output folder
 for atlas in `ls -d $in_atlas_dir/*`

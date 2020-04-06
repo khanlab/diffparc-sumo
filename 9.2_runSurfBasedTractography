@@ -48,19 +48,6 @@ brainmask_bin=$out_tract_dir/nodif_brain_mask_bin.nii.gz
 bedpost_samples=$bedpost_dir/merged
 
 
-csf_t1space=$subj_dir/t1/t1.brain.inorm.fast_prob_0.nii.gz
-  csf_dwispace=$parc_dir/csf_prob.nii.gz
-  csf_mask=$parc_dir/csf_prob_th.nii.gz
-
-  #get probabilistic csf segmentation
-  if [ ! -e $csf_mask ]
-  then
-  echo reg_resample -flo $csf_t1space -ref $ref_file -res $csf_dwispace
-  reg_resample -flo $csf_t1space -ref $ref_file -res $csf_dwispace
-
-  echo fslmaths $csf_dwispace -thr 0.5 -bin $csf_mask
-  fslmaths $csf_dwispace -thr 0.5 -bin $csf_mask
-  fi
 
  #use this seed ref, since it corresponds to targets_dtires.txt images (images in resampled dtispace)
  seedref=$parc_dir/seed_ref.nii.gz
